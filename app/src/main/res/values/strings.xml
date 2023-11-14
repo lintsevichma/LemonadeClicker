@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LemonadeClicker</string>
+    <string name="lemonade_header_text">Lemonade</string>
+    <string name="lemonade_footer_text">OOO \"vlv-red\", vlv-red.by</string>
+    <string name="lemon_tree_text">Tap the lemon tree to select a lemon</string>
+    <string name="lemon_squeeze_text">Keep tapping the lemon to squeeze it</string>
+    <string name="lemon_drink_text">Tap the lemonade to drink it</string>
+    <string name="lemon_restart_text">Tap the empty glass to start again</string>
+</resources>
