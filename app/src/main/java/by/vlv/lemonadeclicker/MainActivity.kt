@@ -7,7 +7,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -50,7 +49,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LemonadeUI()
+                    LemonadeApp()
                 }
             }
         }
@@ -58,14 +57,14 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun LemonadeUI(modifier: Modifier = Modifier) {
+fun LemonadeApp(modifier: Modifier = Modifier) {
     var step by remember { mutableStateOf(1) }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         LemonadeHeader()
         Spacer(modifier = modifier.padding(50.dp))
-        LemonadeImageWithText(step = step) {
+        LemonadeCard(step = step) {
             when (step) {
                 1, 3 -> step++
                 2 -> step = (2..3).random()
@@ -78,7 +77,7 @@ fun LemonadeUI(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun LemonadeImageWithText(step: Int, onClick: () -> Unit) {
+fun LemonadeCard(step: Int, onClick: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -128,29 +127,27 @@ fun LemonadeText(step: Int) {
 }
 
 @Composable
-fun LemonadeHeader(modifier: Modifier = Modifier) {
-    Row {
-        Box(
-            modifier = modifier
-                .background(LemonadeHeaderYellow)
-                .fillMaxWidth()
-                .wrapContentWidth(Alignment.CenterHorizontally)
-                .padding(top = 36.dp, bottom = 12.dp)
-        ) {
-            Text(
-                text = stringResource(id = R.string.lemonade_header_text),
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
-            )
-        }
+fun LemonadeHeader() {
+    Row(
+        modifier = Modifier
+            .background(LemonadeHeaderYellow)
+            .fillMaxWidth()
+            .wrapContentWidth(Alignment.CenterHorizontally)
+            .padding(top = 36.dp, bottom = 12.dp)
+    ) {
+        Text(
+            text = stringResource(id = R.string.lemonade_header_text),
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
 
 @Composable
-fun LemonadeFooter(modifier: Modifier = Modifier) {
+fun LemonadeFooter() {
     Row(
         horizontalArrangement = Arrangement.Center,
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
             .wrapContentWidth(Alignment.CenterHorizontally)
             .padding(top = 3.dp, bottom = 2.dp)
@@ -167,6 +164,6 @@ fun LemonadeFooter(modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     LemonadeClickerTheme {
-        LemonadeUI()
+        LemonadeApp()
     }
 }
